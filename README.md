@@ -26,12 +26,12 @@ At the start:
 - Start screen with title and start button
 - Question screen showing:
   - Question text
-  - 4 answers (A–D)
+  - 4 answers (A-D)
   - Current level & reward
   - Sidebar with all levels (current highlighted, safe level emphasized)
 - Instant feedback (correct = green, incorrect = red)
 - End screen with total earnings and **Play Again**
-- 2 jokers (50:50, Skip Question) – usable once per game
+- 2 jokers (50:50, Skip Question) - usable once per game
 - Used jokers visually disabled
 
 ## Bonus
