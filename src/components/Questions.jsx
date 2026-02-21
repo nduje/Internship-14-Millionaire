@@ -4,7 +4,7 @@ import levels from "../constants/levels.js";
 import letters from "../constants/letters.js";
 import shuffle from "../helpers/shuffle.js";
 
-const Questions = () => {
+const Questions = ({ incrementLevel }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [score, setScore] = useState("0€");
     const [finished, setFinished] = useState(false);
@@ -34,6 +34,7 @@ const Questions = () => {
         }
 
         setCurrentIndex((prev) => prev + 1);
+        incrementLevel();
     };
 
     return (
