@@ -7,6 +7,7 @@ import Scoreboard from "./components/Scoreboard";
 function App() {
     const [gameState, setGameState] = useState("MainMenu");
     const [score, setScore] = useState(0);
+    const [resetKey, setResetKey] = useState(0);
 
     return (
         <>
@@ -19,12 +20,16 @@ function App() {
                         setScore(finalScore);
                         setGameState("Scoreboard");
                     }}
+                    resetKey={resetKey}
                 />
             )}
             {gameState === "Scoreboard" && (
                 <Scoreboard
                     onStart={() => setGameState("MainMenu")}
-                    onRestart={() => setGameState("Game")}
+                    onRestart={() => {
+                        setGameState("Game");
+                        setResetKey(0);
+                    }}
                     score={score}
                 />
             )}
