@@ -3,7 +3,7 @@ import styles from "./Sidebar.module.css";
 
 const Sidebar = ({ currentLevel }) => {
     return (
-        <div className={styles.container}>
+        <section className={styles.container}>
             {[...levels].reverse().map((level) => (
                 <div
                     key={level.level}
@@ -34,7 +34,7 @@ const Sidebar = ({ currentLevel }) => {
                     {level.prize}
                 </div>
             ))}
-        </div>
+        </section>
     );
 };
 

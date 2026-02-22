@@ -2,12 +2,13 @@ import { useState } from "react";
 import "./App.css";
 import MainMenu from "./components/MainMenu/MainMenu";
 import Game from "./components/Game/Game";
-import Scoreboard from "./components/Scoreboard";
+import GameOver from "./components/GameOver/GameOver";
 
 function App() {
     const [gameState, setGameState] = useState("MainMenu");
     const [score, setScore] = useState(0);
     const [resetKey, setResetKey] = useState(0);
+    const [winner, setWinner] = useState(false);
 
     return (
         <div
@@ -25,21 +26,26 @@ function App() {
             )}
             {gameState === "Game" && (
                 <Game
-                    onFinish={(finalScore) => {
+                    onFinish={(finalScore, winner) => {
                         setScore(finalScore);
-                        setGameState("Scoreboard");
+                        setWinner(winner);
+                        setGameState("GameOver");
                     }}
                     resetKey={resetKey}
                 />
             )}
-            {gameState === "Scoreboard" && (
-                <Scoreboard
-                    onStart={() => setGameState("MainMenu")}
+            {gameState === "GameOver" && (
+                <GameOver
+                    onStart={() => {
+                        setGameState("MainMenu");
+                        setResetKey(0);
+                    }}
                     onRestart={() => {
                         setGameState("Game");
                         setResetKey(0);
                     }}
                     score={score}
+                    winner={winner}
                 />
             )}
         </div>

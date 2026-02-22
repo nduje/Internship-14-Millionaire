@@ -5,10 +5,15 @@ import letters from "../../constants/letters.js";
 import shuffle from "../../helpers/shuffle.js";
 import styles from "./Questions.module.css";
 
-const Questions = ({ setCurrentLevel, isSkipped, isHalfed, resetKey }) => {
+const Questions = ({
+    setCurrentLevel,
+    isSkipped,
+    isHalfed,
+    resetKey,
+    setFinalScore,
+}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [score, setScore] = useState("0€");
-    const [finished, setFinished] = useState(false);
     const [filteredQuestions, setFilteredQuestions] = useState(() =>
         shuffle([...questions]).slice(0, 10),
     );
@@ -23,7 +28,6 @@ const Questions = ({ setCurrentLevel, isSkipped, isHalfed, resetKey }) => {
         setFilteredQuestions(() => shuffle([...questions]).slice(0, 10));
         setCurrentIndex(0);
         setScore("0€");
-        setFinished(false);
     }, [resetKey]);
 
     useEffect(() => {
@@ -48,7 +52,7 @@ const Questions = ({ setCurrentLevel, isSkipped, isHalfed, resetKey }) => {
                 setScore("0€");
                 setCurrentIndex(0);
                 setCurrentLevel(1);
-                setFinished(true);
+                setFinalScore(currentIndex > 5 ? "5.000€" : "0€", false);
                 setSelectedAnswerId(null);
                 setShowCorrect(false);
             }, 1000);
@@ -60,7 +64,7 @@ const Questions = ({ setCurrentLevel, isSkipped, isHalfed, resetKey }) => {
             setScore(levels[currentIndex].prize);
 
             if (currentIndex + 1 >= levels.length) {
-                setFinished(true);
+                setFinalScore("500.000€", true);
                 return;
             }
 

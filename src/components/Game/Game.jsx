@@ -10,7 +10,7 @@ const Game = ({ onFinish, resetKey }) => {
     const [isHalfed, setIsHalfed] = useState(false);
 
     return (
-        <div className={styles.container}>
+        <section className={styles.container}>
             <div className={styles.jokers}>
                 <Jokers
                     skipQuestion={() => setIsSkipped(true)}
@@ -26,9 +26,10 @@ const Game = ({ onFinish, resetKey }) => {
                     isSkipped={isSkipped}
                     isHalfed={isHalfed}
                     resetKey={resetKey}
+                    setFinalScore={onFinish}
                 />
             </div>
-        </div>
+        </section>
     );
 };
 

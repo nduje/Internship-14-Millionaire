@@ -16,7 +16,7 @@ const Jokers = ({ skipQuestion, halfQuestion }) => {
     };
 
     return (
-        <div className={styles.container}>
+        <section className={styles.container}>
             <button
                 onClick={() => {
                     handleSkip();
@@ -47,7 +47,7 @@ const Jokers = ({ skipQuestion, halfQuestion }) => {
             >
                 <i className="fa-solid fa-circle-half-stroke"></i>
             </button>
-        </div>
+        </section>
     );
 };
 
