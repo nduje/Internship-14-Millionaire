@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import MainMenu from "./components/MainMenu";
-import Game from "./components/Game";
+import MainMenu from "./components/MainMenu/MainMenu";
+import Game from "./components/Game/Game";
 import Scoreboard from "./components/Scoreboard";
 
 function App() {
@@ -10,7 +10,16 @@ function App() {
     const [resetKey, setResetKey] = useState(0);
 
     return (
-        <>
+        <div
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+                height: "100%",
+            }}
+        >
             {gameState === "MainMenu" && (
                 <MainMenu onStart={() => setGameState("Game")} />
             )}
@@ -33,7 +42,7 @@ function App() {
                     score={score}
                 />
             )}
-        </>
+        </div>
     );
 }
 

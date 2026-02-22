@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./Jokers.module.css";
 
 const Jokers = ({ skipQuestion, halfQuestion }) => {
     const [skipUsed, setSkipUsed] = useState(false);
@@ -15,30 +16,36 @@ const Jokers = ({ skipQuestion, halfQuestion }) => {
     };
 
     return (
-        <div>
+        <div className={styles.container}>
             <button
                 onClick={() => {
                     handleSkip();
                 }}
                 style={{
-                    backgroundColor: skipUsed ? "gray" : "",
+                    backgroundColor: skipUsed ? "#222831" : "",
+                    borderColor: skipUsed ? "#393E46" : "",
+                    color: skipUsed ? "#393E46" : "",
                     cursor: skipUsed ? "default" : "pointer",
                 }}
                 disabled={skipUsed}
+                className={styles.button}
             >
-                Skip
+                <i className="fa-solid fa-arrow-right"></i>
             </button>
             <button
                 onClick={() => {
                     handleHalf();
                 }}
                 style={{
-                    backgroundColor: halfUsed ? "gray" : "",
+                    backgroundColor: halfUsed ? "#222831" : "",
+                    borderColor: halfUsed ? "#393E46" : "",
+                    color: halfUsed ? "#393E46" : "",
                     cursor: halfUsed ? "default" : "pointer",
                 }}
                 disabled={halfUsed}
+                className={styles.button}
             >
-                50:50
+                <i className="fa-solid fa-circle-half-stroke"></i>
             </button>
         </div>
     );
